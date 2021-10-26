@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReCapProject.Business.Abstracts\ReCapProject.Business.Abstracts.csproj" />
+    <ProjectReference Include="..\ReCapProject.Data.Access.Abstracts\ReCapProject.Data.Access.Abstracts.csproj" />
+  </ItemGroup>
+
+</Project>
