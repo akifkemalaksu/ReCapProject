@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReCapProject.Business.Abstracts
+namespace ReCapProject.Data.Access.Abstracts
 {
-    public interface ICarService
+    public interface IColorRepository : IRepository<Color, int>
     {
-        void Add(Car car);
-        Car GetCarById(int Id);
-        List<Car> GetCars();
+
     }
 }

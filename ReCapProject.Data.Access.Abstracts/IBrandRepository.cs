@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace ReCapProject.Data.Access.Abstracts
 {
-    public interface ICarDAL
+    public interface IBrandRepository : IRepository<Brand, int>
     {
-        Car GetById(int Id);
-        List<Car> GetAll();
-        void Add(Car car);
-        void Update(Car car);
-        void Delete(Car car);
-        void Delete(int Id);
+
     }
 }
