@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ReCapProject.Data.Entities;
-using System;
-using System.Configuration;
 
 namespace ReCapProject.Data.Access.EntityFramework
 {
-    public class ReCapContext : DbContext
+    public class EFReCapContext : DbContext
     {
-        public ReCapContext()
+        public EFReCapContext()
         {
             Database.EnsureCreated();
         }

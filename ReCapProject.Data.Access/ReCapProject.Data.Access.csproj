@@ -5,16 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReCapProject.Data.Access.Abstracts\ReCapProject.Data.Access.Abstracts.csproj" />
+    <Folder Include="EntityFramework\Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EntityFramework\Migrations\" />
+    <ProjectReference Include="..\ReCapProject.Core\ReCapProject.Core.csproj" />
+    <ProjectReference Include="..\ReCapProject.Data.Entities\ReCapProject.Data.Entities.csproj" />
   </ItemGroup>
 
 </Project>

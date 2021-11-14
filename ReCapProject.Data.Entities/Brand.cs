@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ReCapProject.Data.Entities
 {
-    public class Brand : EntityBase<int>
+    public class Brand : IEntity<int>
     {
         public int Id { get; set; }
         [Required, MinLength(2), MaxLength(100)]

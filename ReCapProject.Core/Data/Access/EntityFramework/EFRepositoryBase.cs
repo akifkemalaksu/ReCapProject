@@ -1,24 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ReCapProject.Data.Access.Abstracts;
+using ReCapProject.Core.Data.Access;
 using ReCapProject.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReCapProject.Data.Access.EntityFramework.Repositories
 {
-    public class RepositoryBase<TEntity, TKey> : IRepository<TEntity, TKey>, IDisposable
-        where TEntity : class, EntityBase<TKey>, new()
+    public class EFRepositoryBase<TContext, TEntity, TKey> : IRepository<TEntity, TKey>, IDisposable
+        where TContext : DbContext, new()
+        where TEntity : class, IEntity<TKey>, new()
         where TKey : struct
     {
-        private readonly DbContext _dbContext;
-        private readonly DbSet<TEntity> _dbSet;
+        protected readonly TContext _dbContext;
+        protected readonly DbSet<TEntity> _dbSet;
         private bool _disposed;
 
-        protected RepositoryBase(DbContext dbContext)
+        protected EFRepositoryBase(TContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();
@@ -26,9 +25,10 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
 
         #region IRepository
 
-        public void Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
             _dbSet.Add(entity);
+            return entity;
         }
 
         public void Delete(TKey key)
@@ -39,7 +39,7 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
 
         public void Delete(TEntity entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Deleted;
+            _dbSet.Remove(entity);
         }
 
         public TEntity Get(TKey key)
@@ -59,10 +59,10 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
                 _dbSet.Where(expression).Skip(skip).Take(take).ToList();
         }
 
-        public void Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
-            _dbSet.Attach(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbSet.Update(entity);
+            return entity;
         }
 
         public void SaveChanges()
@@ -74,7 +74,7 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
 
         #region IDisposable
 
-        ~RepositoryBase()
+        ~EFRepositoryBase()
         {
             Dispose(false);
         }

@@ -6,14 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReCapProject.Business.Abstracts\ReCapProject.Business.Abstracts.csproj" />
     <ProjectReference Include="..\ReCapProject.Business\ReCapProject.Business.csproj" />
-    <ProjectReference Include="..\ReCapProject.Data.Access.Abstracts\ReCapProject.Data.Access.Abstracts.csproj" />
-    <ProjectReference Include="..\ReCapProject.Data.Access\ReCapProject.Data.Access.csproj" />
     <ProjectReference Include="..\ReCapProject.Data.Entities\ReCapProject.Data.Entities.csproj" />
   </ItemGroup>
 
