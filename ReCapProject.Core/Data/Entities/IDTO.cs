@@ -1,6 +1,6 @@
 ﻿namespace ReCapProject.Core.Data.Entities
 {
-    public interface IDTO
+    public interface IDto
     {
     }
 }

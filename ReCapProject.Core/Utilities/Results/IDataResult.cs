@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReCapProject.Core.Business
+namespace ReCapProject.Core.Utilities.Results
 {
-    public interface IBusinessEngine
+    public interface IDataResult<T> : IResult
     {
+        T Data { get; }
     }
 }

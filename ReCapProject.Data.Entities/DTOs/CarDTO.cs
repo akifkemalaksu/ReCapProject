@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReCapProject.Data.Entities.DTOs
 {
-    public class CarDTO : IDTO
+    public class CarDTO : IDto
     {
         public string BrandName { get; set; }
         public string ColorName { get; set; }

@@ -15,7 +15,7 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
     {
         protected readonly TContext _dbContext;
         protected readonly DbSet<TEntity> _dbSet;
-        private bool _disposed;
+        private bool _disposed = false;
 
         protected EFRepositoryBase(TContext dbContext)
         {
@@ -85,7 +85,7 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
             GC.SuppressFinalize(this);
         }
 
-        public void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (disposing && !_disposed)
             {
