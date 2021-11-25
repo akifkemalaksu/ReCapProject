@@ -1,4 +1,5 @@
 ﻿using ReCapProject.Business.Abstract;
+using ReCapProject.Business.Constants;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Entities;
@@ -25,6 +26,20 @@ namespace ReCapProject.Business.Concrete
             _userRepository.Delete(user);
             _userRepository.SaveChanges();
             return new SuccessResult();
+        }
+
+        public IResult Delete(int id)
+        {
+            var user = GetById(id);
+            if (user.Data is not null)
+            {
+                Delete(user.Data);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Messages.NotFound);
+            }
         }
 
         public IDataResult<ICollection<User>> GetAll(int skip, int take, Expression<Func<User, bool>> expression = null)

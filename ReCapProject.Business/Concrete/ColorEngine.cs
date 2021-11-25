@@ -1,4 +1,5 @@
 ﻿using ReCapProject.Business.Abstract;
+using ReCapProject.Business.Constants;
 using ReCapProject.Core.Data.Access;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
@@ -24,6 +25,20 @@ namespace ReCapProject.Business.Concrete
             _colorRepository.Delete(color);
             _colorRepository.SaveChanges();
             return new SuccessResult();
+        }
+
+        public IResult Delete(int id)
+        {
+            var color = GetById(id);
+            if (color.Data is not null)
+            {
+                Delete(color.Data);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Messages.NotFound);
+            }
         }
 
         public IDataResult<ICollection<Color>> GetAll(int skip, int take, Expression<Func<Color, bool>> expression = null)

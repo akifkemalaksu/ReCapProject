@@ -18,5 +18,6 @@ namespace ReCapProject.Business.Abstract
         IDataResult<Rental> Insert(Rental rental);
         IDataResult<Rental> Update(Rental rental);
         IResult Delete(Rental rental);
+        IResult Delete(int id);
     }
 }

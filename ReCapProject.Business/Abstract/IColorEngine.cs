@@ -15,5 +15,6 @@ namespace ReCapProject.Business.Abstract
         IDataResult<Color> Insert(Color color);
         IDataResult<Color> Update(Color color);
         IResult Delete(Color color);
+        IResult Delete(int id);
     }
 }

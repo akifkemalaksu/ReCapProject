@@ -15,5 +15,6 @@ namespace ReCapProject.Business.Abstract
         IDataResult<Brand> Insert(Brand brand);
         IDataResult<Brand> Update(Brand brand);
         IResult Delete(Brand brand);
+        IResult Delete(int id);
     }
 }

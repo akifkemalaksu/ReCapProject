@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCapProject.Business", "Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCapProject.ConsoleApp", "ReCapProject.ConsoleApp\ReCapProject.ConsoleApp.csproj", "{7124B7CC-8B05-4E69-988A-1AB4E51BC28C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCapProject.Core", "ReCapProject.Core\ReCapProject.Core.csproj", "{D5109349-CDBF-4B96-943E-AE989EBFFBD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCapProject.Core", "ReCapProject.Core\ReCapProject.Core.csproj", "{D5109349-CDBF-4B96-943E-AE989EBFFBD1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCapProject.Data.Access", "ReCapProject.Data.Access\ReCapProject.Data.Access.csproj", "{DE7C0878-81DE-4CD9-813E-638EC8C7BAE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{E2375CA0-9968-4FD7-BAF2-376B07A25B4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DE7C0878-81DE-4CD9-813E-638EC8C7BAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE7C0878-81DE-4CD9-813E-638EC8C7BAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE7C0878-81DE-4CD9-813E-638EC8C7BAE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2375CA0-9968-4FD7-BAF2-376B07A25B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2375CA0-9968-4FD7-BAF2-376B07A25B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2375CA0-9968-4FD7-BAF2-376B07A25B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2375CA0-9968-4FD7-BAF2-376B07A25B4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

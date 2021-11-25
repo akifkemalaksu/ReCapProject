@@ -1,4 +1,5 @@
 ﻿using ReCapProject.Business.Abstract;
+using ReCapProject.Business.Constants;
 using ReCapProject.Core.Data.Access;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
@@ -26,6 +27,20 @@ namespace ReCapProject.Business.Concrete
             _carRepository.Delete(car);
             _carRepository.SaveChanges();
             return new SuccessResult();
+        }
+
+        public IResult Delete(int id)
+        {
+            var car = GetById(id);
+            if (car.Data is not null)
+            {
+                Delete(car.Data);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Messages.NotFound);
+            }
         }
 
         public IDataResult<ICollection<Car>> GetAll(int skip, int take, Expression<Func<Car, bool>> expression = null)

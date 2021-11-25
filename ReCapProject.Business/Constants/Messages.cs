@@ -10,5 +10,7 @@ namespace ReCapProject.Business.Constants
     public static class Messages
     {
         public readonly static string CarIsRented = "Bu araba kiralanmış.";
+
+        public readonly static string NotFound = "Veri bulunamadı.";
     }
 }

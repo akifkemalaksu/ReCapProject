@@ -16,5 +16,6 @@ namespace ReCapProject.Business.Abstract
         IDataResult<Car> Insert(Car car);
         IDataResult<Car> Update(Car car);
         IResult Delete(Car car);
+        IResult Delete(int id);
     }
 }

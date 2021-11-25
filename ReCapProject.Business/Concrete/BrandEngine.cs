@@ -1,4 +1,5 @@
 ﻿using ReCapProject.Business.Abstract;
+using ReCapProject.Business.Constants;
 using ReCapProject.Core.Data.Access;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
@@ -23,6 +24,20 @@ namespace ReCapProject.Business.Concrete
             _brandRepository.Delete(brand);
             _brandRepository.SaveChanges();
             return new SuccessResult();
+        }
+
+        public IResult Delete(int id)
+        {
+            var brand = GetById(id);
+            if (brand.Data is not null)
+            {
+                Delete(brand.Data);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Messages.NotFound);
+            }
         }
 
         public IDataResult<ICollection<Brand>> GetAll(int skip, int take, Expression<Func<Brand, bool>> expression = null)

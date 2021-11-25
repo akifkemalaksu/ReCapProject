@@ -28,6 +28,20 @@ namespace ReCapProject.Business.Concrete
             return new SuccessResult();
         }
 
+        public IResult Delete(int id)
+        {
+            var rental = GetById(id);
+            if (rental.Data is not null)
+            {
+                Delete(rental.Data);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Messages.NotFound);
+            }
+        }
+
         public IDataResult<ICollection<Rental>> GetAll(int skip, int take, Expression<Func<Rental, bool>> expression = null)
         {
             return new SuccessDataResult<ICollection<Rental>>(_rentalRepository.GetList(skip, take, expression));
