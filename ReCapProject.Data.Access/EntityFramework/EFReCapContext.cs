@@ -12,12 +12,7 @@ namespace ReCapProject.Data.Access.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=AKA;Initial Catalog=ReCapContext;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;");
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-6TL0L84;Initial Catalog=ReCapContext;Integrated Security=True;");
         }
 
         public DbSet<Car> Cars { get; set; }

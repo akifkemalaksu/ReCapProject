@@ -31,39 +31,33 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
-            services.AddScoped<EFReCapContext>();
 
-            services.AddScoped<ICarEngine, CarEngine>();
-            services.AddScoped<ICarRepository>(x =>
-                new EFCarRepository(x.GetRequiredService<EFReCapContext>())
-            );
-
-            services.AddScoped<IBrandEngine, BrandEngine>();
-            services.AddScoped<IBrandRepository>(x =>
-                new EFBrandRepository(x.GetRequiredService<EFReCapContext>())
-            );
-
-            services.AddScoped<IColorEngine, ColorEngine>();
-            services.AddScoped<IColorRepository>(x =>
-                new EFColorRepository(x.GetRequiredService<EFReCapContext>())
-            );
-
-            services.AddScoped<ICustomerEngine, CustomerEngine>();
-            services.AddScoped<ICustomerRepository>(x =>
-                new EFCustomerRepository(x.GetRequiredService<EFReCapContext>())
-            );
-
-            services.AddScoped<IRentalEngine, RentalEngine>();
-            services.AddScoped<IRentalRepository>(x =>
-                new EFRentalRepository(x.GetRequiredService<EFReCapContext>())
-            );
-
-            services.AddScoped<IUserEngine, UserEngine>();
-            services.AddScoped<IUserRepository>(x =>
-                new EFUserRepository(x.GetRequiredService<EFReCapContext>())
-            );
+            //services.AddScoped<EFReCapContext>();
+            //services.AddScoped<ICarEngine, CarEngine>();
+            //services.AddScoped<ICarRepository>(x =>
+            //    new EFCarRepository(x.GetRequiredService<EFReCapContext>())
+            //);
+            //services.AddScoped<IBrandEngine, BrandEngine>();
+            //services.AddScoped<IBrandRepository>(x =>
+            //    new EFBrandRepository(x.GetRequiredService<EFReCapContext>())
+            //);
+            //services.AddScoped<IColorEngine, ColorEngine>();
+            //services.AddScoped<IColorRepository>(x =>
+            //    new EFColorRepository(x.GetRequiredService<EFReCapContext>())
+            //);
+            //services.AddScoped<ICustomerEngine, CustomerEngine>();
+            //services.AddScoped<ICustomerRepository>(x =>
+            //    new EFCustomerRepository(x.GetRequiredService<EFReCapContext>())
+            //);
+            //services.AddScoped<IRentalEngine, RentalEngine>();
+            //services.AddScoped<IRentalRepository>(x =>
+            //    new EFRentalRepository(x.GetRequiredService<EFReCapContext>())
+            //);
+            //services.AddScoped<IUserEngine, UserEngine>();
+            //services.AddScoped<IUserRepository>(x =>
+            //    new EFUserRepository(x.GetRequiredService<EFReCapContext>())
+            //);
 
             services.AddSwaggerGen(c =>
             {
