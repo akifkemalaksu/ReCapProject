@@ -10,7 +10,6 @@ namespace ReCapProject.Data.Entities
     public class Customer : IEntity<int>
     {
         public int Id { get; set; }
-        [MaxLength(200)]
         public string CompanyName { get; set; }
     }
 }

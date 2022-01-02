@@ -1,5 +1,6 @@
 ﻿using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
+using ReCapProject.Business.ValidationRules.FluentValidation;
 using ReCapProject.Core.Data.Access;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
@@ -57,6 +58,11 @@ namespace ReCapProject.Business.Concrete
 
         public IDataResult<Brand> Insert(Brand brand)
         {
+            var validator = new BrandValidator();
+            if (validator.Validate(brand).IsValid)
+            {
+                throw new Exception("Validasyon hatası.");
+            }
             brand = _brandRepository.Add(brand);
             _brandRepository.SaveChanges();
             return new SuccessDataResult<Brand>(brand);
