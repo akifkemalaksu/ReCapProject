@@ -1,14 +1,13 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Concrete;
+using ReCapProject.Core.Utilities.Interceptors;
 using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Access.EntityFramework;
 using ReCapProject.Data.Access.EntityFramework.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReCapProject.Business.DependencyResolvers.Autofac
 {
@@ -31,6 +30,13 @@ namespace ReCapProject.Business.DependencyResolvers.Autofac
             builder.RegisterType<CustomerEngine>().As<ICustomerEngine>().SingleInstance();
             builder.RegisterType<RentalEngine>().As<IRentalEngine>().SingleInstance();
             builder.RegisterType<UserEngine>().As<IUserEngine>().SingleInstance();
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()
+                }).SingleInstance();
         }
     }
 }

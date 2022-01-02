@@ -16,8 +16,8 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
         public List<CarDTO> GetAllCarsDetails()
         {
             return (from car in _dbSet
-                    join brand in _dbContext.Brands on car.brandId equals brand.Id
-                    join color in _dbContext.Colors on car.colorId equals color.Id
+                    join brand in _dbContext.Brands on car.BrandId equals brand.Id
+                    join color in _dbContext.Colors on car.ColorId equals color.Id
                     select new CarDTO
                     {
                         BrandName = brand.Name,

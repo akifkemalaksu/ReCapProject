@@ -1,14 +1,13 @@
 ﻿using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
+using ReCapProject.Business.ValidationRules.FluentValidation;
+using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReCapProject.Business.Concrete
 {
@@ -57,6 +56,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Rental>(_rentalRepository.Get(id));
         }
 
+        [ValidationAspectAttribute(typeof(RentalValidator))]
         public IDataResult<Rental> Insert(Rental rental)
         {
             var carIsRented = _rentalRepository

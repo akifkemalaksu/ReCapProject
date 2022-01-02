@@ -12,8 +12,8 @@ namespace ReCapProject.Business.ValidationRules.FluentValidation
     {
         public CarValidator()
         {
-            RuleFor(x => x.brandId).NotEmpty();
-            RuleFor(x => x.colorId).NotEmpty();
+            RuleFor(x => x.BrandId).NotEmpty();
+            RuleFor(x => x.ColorId).NotEmpty();
             RuleFor(x => x.ModelYear).NotEmpty();
             RuleFor(x => x.DailyPrice).NotEmpty();
             RuleFor(x => x.ModelYear).GreaterThan(1990);

@@ -1,14 +1,12 @@
 ﻿using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
-using ReCapProject.Core.Data.Access;
+using ReCapProject.Business.ValidationRules.FluentValidation;
+using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
-using ReCapProject.Data.Access.EntityFramework.Repositories;
 using ReCapProject.Data.Entities;
-using ReCapProject.Data.Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace ReCapProject.Business.Concrete
@@ -58,6 +56,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Car>(_carRepository.Get(id));
         }
 
+        [ValidationAspectAttribute(typeof(CarValidator))]
         public IDataResult<Car> Insert(Car car)
         {
             car = _carRepository.Add(car);

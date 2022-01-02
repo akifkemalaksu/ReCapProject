@@ -70,7 +70,7 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
             _dbContext.SaveChanges();
         }
 
-        #endregion
+        #endregion IRepository
 
         #region IDisposable
 
@@ -95,6 +95,6 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
             _disposed = true;
         }
 
-        #endregion
+        #endregion IDisposable
     }
 }

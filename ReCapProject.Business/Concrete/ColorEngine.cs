@@ -1,9 +1,9 @@
 ﻿using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
-using ReCapProject.Core.Data.Access;
+using ReCapProject.Business.ValidationRules.FluentValidation;
+using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
-using ReCapProject.Data.Access.EntityFramework.Repositories;
 using ReCapProject.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -56,6 +56,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Color>(_colorRepository.Get(id));
         }
 
+        [ValidationAspectAttribute(typeof(ColorValidator))]
         public IDataResult<Color> Insert(Color color)
         {
             color = _colorRepository.Add(color);
