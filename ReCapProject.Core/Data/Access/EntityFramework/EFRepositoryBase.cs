@@ -59,6 +59,11 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
                 _dbSet.Where(expression).Skip(skip).Take(take).ToList();
         }
 
+        public List<TEntity> GetList(Expression<Func<TEntity, bool>> expression)
+        {
+            return _dbSet.Where(expression).ToList();
+        }
+
         public TEntity Update(TEntity entity)
         {
             _dbSet.Update(entity);

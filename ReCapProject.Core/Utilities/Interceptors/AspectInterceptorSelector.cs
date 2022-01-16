@@ -10,6 +10,7 @@ namespace ReCapProject.Core.Utilities.Interceptors
         public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
         {
             var classAttributes = type.GetCustomAttributes<MethodInterceptionBaseAttribute>(true).ToList();
+            var test = type.GetMethod(method.Name);
             var methodAttributes = type.GetMethod(method.Name).GetCustomAttributes<MethodInterceptionBaseAttribute>(true).ToList();
             classAttributes.AddRange(methodAttributes);
             //classAttributes.Add(new ExceptionLogAspect(typeof(FileLogger))); // Loglama için, henüz hazır değil.

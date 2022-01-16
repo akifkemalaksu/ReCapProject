@@ -1,16 +1,13 @@
-﻿using ReCapProject.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace ReCapProject.Business.Constants
 {
     public static class Messages
     {
-        public readonly static string CarIsRented = "Bu araba kiralanmış.";
+        public static readonly string CarIsRented = "Bu araba kiralanmış.";
 
-        public readonly static string NotFound = "Veri bulunamadı.";
+        public static readonly string NotFound = "Veri bulunamadı.";
+
+        public static readonly string MaximumCarImagesWarning = "Bu araba için yüklenen fotoğraf sayısı sınıra ulaşmış. Bu nedenle yükleme gerçekleştirilemez.";
     }
 }
