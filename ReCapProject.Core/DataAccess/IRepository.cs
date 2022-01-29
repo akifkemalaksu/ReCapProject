@@ -1,9 +1,9 @@
-﻿using ReCapProject.Data.Entities;
+﻿using ReCapProject.Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace ReCapProject.Core.Data.Access
+namespace ReCapProject.Core.DataAccess
 {
     public interface IRepository<TEntity, TKey>
         where TEntity : class, IEntity<TKey>, new()
@@ -21,9 +21,9 @@ namespace ReCapProject.Core.Data.Access
 
         TEntity Get(Expression<Func<TEntity, bool>> expression);
 
-        List<TEntity> GetList(int skip, int take, Expression<Func<TEntity, bool>> expression = null);
+        ICollection<TEntity> GetList(int skip, int take, Expression<Func<TEntity, bool>> expression = null);
 
-        List<TEntity> GetList(Expression<Func<TEntity, bool>> expression);
+        ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression);
 
         void SaveChanges();
     }

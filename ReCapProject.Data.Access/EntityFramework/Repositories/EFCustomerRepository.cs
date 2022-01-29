@@ -1,4 +1,5 @@
-﻿using ReCapProject.Data.Access.Abstract;
+﻿using ReCapProject.Core.DataAccess.EntityFramework;
+using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Entities;
 using System;
 using System.Collections.Generic;

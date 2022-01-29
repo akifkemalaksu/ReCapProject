@@ -1,8 +1,8 @@
-﻿using ReCapProject.Data.Access.Abstract;
+﻿using ReCapProject.Core.DataAccess.EntityFramework;
+using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Entities;
 using ReCapProject.Data.Entities.DTOs;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Linq;
 
 namespace ReCapProject.Data.Access.EntityFramework.Repositories
@@ -13,12 +13,12 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
         {
         }
 
-        public List<CarDTO> GetAllCarsDetails()
+        public ICollection<CarDto> GetAllCarsDetails()
         {
             return (from car in _dbSet
                     join brand in _dbContext.Brands on car.BrandId equals brand.Id
                     join color in _dbContext.Colors on car.ColorId equals color.Id
-                    select new CarDTO
+                    select new CarDto
                     {
                         BrandName = brand.Name,
                         ColorName = color.Name,

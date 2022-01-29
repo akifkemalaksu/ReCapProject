@@ -1,13 +1,9 @@
-﻿using ReCapProject.Core.Data.Entities;
+﻿using ReCapProject.Core.Entities.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReCapProject.Data.Entities.DTOs
 {
-    public class CarDTO : IDto
+    public class CarDto : IDto
     {
         public string BrandName { get; set; }
         public string ColorName { get; set; }

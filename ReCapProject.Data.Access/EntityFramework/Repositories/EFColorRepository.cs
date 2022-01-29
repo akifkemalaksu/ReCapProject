@@ -1,4 +1,5 @@
-﻿using ReCapProject.Data.Access.Abstract;
+﻿using ReCapProject.Core.DataAccess.EntityFramework;
+using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Entities;
 
 namespace ReCapProject.Data.Access.EntityFramework.Repositories

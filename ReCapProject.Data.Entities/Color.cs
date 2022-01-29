@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ReCapProject.Core.Entities.Abstract;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReCapProject.Data.Entities
 {

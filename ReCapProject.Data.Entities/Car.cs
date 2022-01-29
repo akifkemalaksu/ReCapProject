@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReCapProject.Core.Entities.Abstract;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 

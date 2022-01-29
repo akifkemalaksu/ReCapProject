@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using ReCapProject.Business.Abstract;
 using ReCapProject.Data.Entities;
@@ -20,6 +21,7 @@ namespace ReCapProject.WebAPI.Controllers
         [Route("", Order = 1)]
         [Route("{skip}/{take}", Order = 2)]
         [HttpGet]
+        [Authorize(Roles = "Car.List")]
         public IActionResult Get(int skip = 0, int take = 10)
         {
             var result = _carEngine.GetAll(skip, take);

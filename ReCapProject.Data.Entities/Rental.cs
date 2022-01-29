@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ReCapProject.Core.Entities.Abstract;
+using System;
 
 namespace ReCapProject.Data.Entities
 {

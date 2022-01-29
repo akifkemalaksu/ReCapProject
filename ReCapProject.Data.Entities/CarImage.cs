@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReCapProject.Core.Entities.Abstract;
+using System;
 
 namespace ReCapProject.Data.Entities
 {

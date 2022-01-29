@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ReCapProject.Core.Data.Access;
-using ReCapProject.Data.Entities;
+using ReCapProject.Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace ReCapProject.Data.Access.EntityFramework.Repositories
+namespace ReCapProject.Core.DataAccess.EntityFramework
 {
     public class EFRepositoryBase<TContext, TEntity, TKey> : IRepository<TEntity, TKey>, IDisposable
         where TContext : DbContext, new()
@@ -52,14 +51,14 @@ namespace ReCapProject.Data.Access.EntityFramework.Repositories
             return _dbSet.Where(expression).FirstOrDefault();
         }
 
-        public List<TEntity> GetList(int skip, int take, Expression<Func<TEntity, bool>> expression = null)
+        public ICollection<TEntity> GetList(int skip, int take, Expression<Func<TEntity, bool>> expression = null)
         {
             return expression is null ?
                 _dbSet.Skip(skip).Take(take).ToList() :
                 _dbSet.Where(expression).Skip(skip).Take(take).ToList();
         }
 
-        public List<TEntity> GetList(Expression<Func<TEntity, bool>> expression)
+        public ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression)
         {
             return _dbSet.Where(expression).ToList();
         }

@@ -15,6 +15,6 @@ namespace ReCapProject.Business.Abstract
 
         IResult UpdateImage(CarImage carImage, IFormFile file);
 
-        IDataResult<List<CarImage>> GetCarImages(int carId);
+        IDataResult<ICollection<CarImage>> GetCarImages(int carId);
     }
 }

@@ -48,7 +48,6 @@ namespace ReCapProject.Business.Concrete
             return new SuccessResult();
         }
 
-
         public IResult DeleteImage(int id)
         {
             var carImage = _carImageRepository.Get(x => x.Id == id);
@@ -70,14 +69,14 @@ namespace ReCapProject.Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<CarImage>> GetCarImages(int carId)
+        public IDataResult<ICollection<CarImage>> GetCarImages(int carId)
         {
             var images = _carImageRepository.GetList(x => x.CarId == carId);
             if (!images.Any())
             {
                 images = GetDefaultImage(carId);
             }
-            return new SuccessDataResult<List<CarImage>>(images);
+            return new SuccessDataResult<ICollection<CarImage>>(images);
         }
 
         private string GetCarImageUploadFolder(int carId)

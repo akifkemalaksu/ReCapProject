@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ReCapProject.Data.Entities
+namespace ReCapProject.Core.Entities.Abstract
 {
     public interface IEntity<TKey>
     {

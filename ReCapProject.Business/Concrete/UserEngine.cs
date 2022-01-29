@@ -2,9 +2,9 @@
 using ReCapProject.Business.Constants;
 using ReCapProject.Business.ValidationRules.FluentValidation;
 using ReCapProject.Core.Aspects.Autofac.Validation;
+using ReCapProject.Core.Entities.Concrete;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
-using ReCapProject.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -54,6 +54,11 @@ namespace ReCapProject.Business.Concrete
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userRepository.Get(id));
+        }
+
+        public IDataResult<ICollection<OperationClaim>> GetOperationClaims(User user)
+        {
+            return new SuccessDataResult<ICollection<OperationClaim>>(_userRepository.GetOperationClaims(user));
         }
 
         [ValidationAspectAttribute(typeof(UserValidator))]

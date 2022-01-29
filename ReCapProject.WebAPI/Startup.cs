@@ -1,21 +1,13 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using ReCapProject.Business.Abstract;
-using ReCapProject.Business.Concrete;
-using ReCapProject.Data.Access.Abstract;
-using ReCapProject.Data.Access.EntityFramework;
-using ReCapProject.Data.Access.EntityFramework.Repositories;
+using ReCapProject.Core.Utilities.Security.Encryption;
+using ReCapProject.Core.Utilities.Security.JWT;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ReCapProject.WebAPI
 {
@@ -32,32 +24,27 @@ namespace ReCapProject.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder.WithOrigins("https://localhost:44395"));
+            });
 
-            //services.AddScoped<EFReCapContext>();
-            //services.AddScoped<ICarEngine, CarEngine>();
-            //services.AddScoped<ICarRepository>(x =>
-            //    new EFCarRepository(x.GetRequiredService<EFReCapContext>())
-            //);
-            //services.AddScoped<IBrandEngine, BrandEngine>();
-            //services.AddScoped<IBrandRepository>(x =>
-            //    new EFBrandRepository(x.GetRequiredService<EFReCapContext>())
-            //);
-            //services.AddScoped<IColorEngine, ColorEngine>();
-            //services.AddScoped<IColorRepository>(x =>
-            //    new EFColorRepository(x.GetRequiredService<EFReCapContext>())
-            //);
-            //services.AddScoped<ICustomerEngine, CustomerEngine>();
-            //services.AddScoped<ICustomerRepository>(x =>
-            //    new EFCustomerRepository(x.GetRequiredService<EFReCapContext>())
-            //);
-            //services.AddScoped<IRentalEngine, RentalEngine>();
-            //services.AddScoped<IRentalRepository>(x =>
-            //    new EFRentalRepository(x.GetRequiredService<EFReCapContext>())
-            //);
-            //services.AddScoped<IUserEngine, UserEngine>();
-            //services.AddScoped<IUserRepository>(x =>
-            //    new EFUserRepository(x.GetRequiredService<EFReCapContext>())
-            //);
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                };
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -75,9 +62,13 @@ namespace ReCapProject.WebAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
 
+            app.UseCors(builder => builder.WithOrigins("https://localhost:44395").AllowAnyHeader());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -1,10 +1,6 @@
 ﻿using FluentValidation;
-using ReCapProject.Data.Entities;
+using ReCapProject.Core.Entities.Concrete;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReCapProject.Business.ValidationRules.FluentValidation
 {
@@ -18,8 +14,6 @@ namespace ReCapProject.Business.ValidationRules.FluentValidation
             RuleFor(x => x.LastName).MinimumLength(2);
             RuleFor(x => x.Email).NotEmpty();
             RuleFor(x => x.Email).EmailAddress();
-            RuleFor(x => x.Password).NotEmpty();
-            RuleFor(x => x.Password).MinimumLength(8);
         }
     }
 }
