@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ReCapProject.Core.DependencyResolvers;
+using ReCapProject.Core.Extensions;
 using ReCapProject.Core.Utilities.Security.Encryption;
 using ReCapProject.Core.Utilities.Security.JWT;
 using System;
@@ -24,6 +26,7 @@ namespace ReCapProject.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin",
@@ -45,6 +48,8 @@ namespace ReCapProject.WebAPI
                     IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                 };
             });
+
+            services.AddDependencyResolvers(new CoreModule());
 
             services.AddSwaggerGen(c =>
             {

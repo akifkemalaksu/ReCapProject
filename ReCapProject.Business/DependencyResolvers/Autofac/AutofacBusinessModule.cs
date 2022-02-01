@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
-using Microsoft.EntityFrameworkCore;
 using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Concrete;
 using ReCapProject.Core.Utilities.Interceptors;
@@ -18,7 +17,8 @@ namespace ReCapProject.Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<EFReCapContext>().As<DbContext>();
+            //builder.RegisterType<EFReCapContext>().As<DbContext>();
+            builder.RegisterType<EFReCapContext>();
 
             builder.Register(c => new EFBrandRepository(c.Resolve<EFReCapContext>())).As<IBrandRepository>().SingleInstance();
             builder.Register(c => new EFCarRepository(c.Resolve<EFReCapContext>())).As<ICarRepository>().SingleInstance();

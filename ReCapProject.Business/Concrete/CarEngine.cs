@@ -1,4 +1,5 @@
 ﻿using ReCapProject.Business.Abstract;
+using ReCapProject.Business.BusinessAspects.Autofac;
 using ReCapProject.Business.Constants;
 using ReCapProject.Business.ValidationRules.FluentValidation;
 using ReCapProject.Core.Aspects.Autofac.Validation;
@@ -41,6 +42,7 @@ namespace ReCapProject.Business.Concrete
             }
         }
 
+        [SecuredOperationAttribute("Car.List")]
         public IDataResult<ICollection<Car>> GetAll(int skip, int take, Expression<Func<Car, bool>> expression = null)
         {
             return new SuccessDataResult<ICollection<Car>>(_carRepository.GetList(skip, take, expression));

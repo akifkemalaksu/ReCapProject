@@ -13,5 +13,6 @@ namespace ReCapProject.Business.Constants
         public static readonly string UserAlreadyExist = "Kullanıcı zaten kayıtlı.";
         public static readonly string UserRegistered = "Kullanıcı kaydı oluşturuldu.";
         public static readonly string AccessTokenCreated = "Access Token oluşturuldu.";
+        public static readonly string AuthorizationDenied = "Yetkiniz yok.";
     }
 }
