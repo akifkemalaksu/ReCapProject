@@ -56,7 +56,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Color>(_colorRepository.Get(id));
         }
 
-        [ValidationAspectAttribute(typeof(ColorValidator))]
+        [ValidationAspect(typeof(ColorValidator))]
         public IDataResult<Color> Insert(Color color)
         {
             color = _colorRepository.Add(color);

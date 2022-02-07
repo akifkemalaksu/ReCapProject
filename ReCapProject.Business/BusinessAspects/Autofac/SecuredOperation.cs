@@ -9,12 +9,12 @@ using System;
 
 namespace ReCapProject.Business.BusinessAspects.Autofac
 {
-    public class SecuredOperationAttribute : MethodInterceptionAttribute
+    public class SecuredOperation : MethodInterceptionAttribute
     {
         private readonly string[] _roles;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public SecuredOperationAttribute(string roles)
+        public SecuredOperation(string roles)
         {
             _roles = roles.Split(',');
             _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();

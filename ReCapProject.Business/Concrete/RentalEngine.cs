@@ -56,7 +56,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Rental>(_rentalRepository.Get(id));
         }
 
-        [ValidationAspectAttribute(typeof(RentalValidator))]
+        [ValidationAspect(typeof(RentalValidator))]
         public IDataResult<Rental> Insert(Rental rental)
         {
             var carIsRented = _rentalRepository

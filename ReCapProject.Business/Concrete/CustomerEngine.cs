@@ -56,7 +56,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Customer>(_customerRepository.Get(id));
         }
 
-        [ValidationAspectAttribute(typeof(CustomerValidator))]
+        [ValidationAspect(typeof(CustomerValidator))]
         public IDataResult<Customer> Insert(Customer customer)
         {
             customer = _customerRepository.Add(customer);

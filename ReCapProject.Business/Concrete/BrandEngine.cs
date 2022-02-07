@@ -56,7 +56,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Brand>(_brandRepository.Get(id));
         }
 
-        [ValidationAspectAttribute(typeof(BrandValidator))]
+        [ValidationAspect(typeof(BrandValidator))]
         public IDataResult<Brand> Insert(Brand brand)
         {
             brand = _brandRepository.Add(brand);

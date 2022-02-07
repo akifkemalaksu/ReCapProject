@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace ReCapProject.Core.Aspects.Autofac.Validation
 {
-    public class ValidationAspectAttribute : MethodInterceptionAttribute
+    public class ValidationAspect : MethodInterceptionAttribute
     {
         private readonly Type _validatorType;
 
-        public ValidationAspectAttribute(Type validatorType)
+        public ValidationAspect(Type validatorType)
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {

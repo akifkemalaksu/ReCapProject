@@ -61,7 +61,7 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<ICollection<OperationClaim>>(_userRepository.GetOperationClaims(user));
         }
 
-        [ValidationAspectAttribute(typeof(UserValidator))]
+        [ValidationAspect(typeof(UserValidator))]
         public IDataResult<User> Insert(User user)
         {
             user = _userRepository.Add(user);
