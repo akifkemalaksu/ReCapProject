@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ReCapProject.Business.Abstract;
 using ReCapProject.Data.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ReCapProject.WebAPI.Controllers
 {
@@ -20,12 +16,21 @@ namespace ReCapProject.WebAPI.Controllers
             _rentalEngine = rentalEngine;
         }
 
-        [Route("", Order = 1)]
-        [Route("{skip}/{take}", Order = 2)]
         [HttpGet]
-        public IActionResult Get(int skip = 0, int take = 10)
+        public IActionResult Get()
         {
-            var result = _rentalEngine.GetAll(skip, take);
+            var result = _rentalEngine.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("GetRentalsWithDetails")]
+        public IActionResult GetDetails()
+        {
+            var result = _rentalEngine.GetWithDetails();
             if (result.Success)
             {
                 return Ok(result);

@@ -13,7 +13,7 @@ namespace ReCapProject.Business.Abstract
 
         IDataResult<User> GetByExpression(Expression<Func<User, bool>> expression);
 
-        IDataResult<ICollection<User>> GetAll(int skip, int take, Expression<Func<User, bool>> expression = null);
+        IDataResult<ICollection<User>> GetAll(Expression<Func<User, bool>> expression = null);
 
         IDataResult<User> Insert(User user);
 

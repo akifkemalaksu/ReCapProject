@@ -18,13 +18,22 @@ namespace ReCapProject.WebAPI.Controllers
             _carEngine = carEngine;
         }
 
-        [Route("", Order = 1)]
-        [Route("{skip}/{take}", Order = 2)]
         [HttpGet]
         [Authorize(Roles = "Car.List")]
-        public IActionResult Get(int skip = 0, int take = 10)
+        public IActionResult Get()
         {
-            var result = _carEngine.GetAll(skip, take);
+            var result = _carEngine.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("GetWithDetails")]
+        public IActionResult GetDetails()
+        {
+            var result = _carEngine.GetAllWithDetails();
             if (result.Success)
             {
                 return Ok(result);

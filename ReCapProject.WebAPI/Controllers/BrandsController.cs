@@ -16,12 +16,10 @@ namespace ReCapProject.WebAPI.Controllers
             _brandEngine = brandEngine;
         }
 
-        [Route("", Order = 1)]
-        [Route("{skip}/{take}", Order = 2)]
         [HttpGet]
-        public IActionResult Get(int skip = 0, int take = 10)
+        public IActionResult Get()
         {
-            var result = _brandEngine.GetAll(skip, take);
+            var result = _brandEngine.GetAll();
             if (result.Success)
             {
                 return Ok(result);

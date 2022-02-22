@@ -10,11 +10,17 @@ namespace ReCapProject.Business.Abstract
     public interface IBrandEngine : IBusinessEngine
     {
         IDataResult<Brand> GetById(int id);
+
         IDataResult<Brand> GetByExpression(Expression<Func<Brand, bool>> expression);
-        IDataResult<ICollection<Brand>> GetAll(int skip, int take, Expression<Func<Brand, bool>> expression = null);
+
+        IDataResult<ICollection<Brand>> GetAll(Expression<Func<Brand, bool>> expression = null);
+
         IDataResult<Brand> Insert(Brand brand);
+
         IDataResult<Brand> Update(Brand brand);
+
         IResult Delete(Brand brand);
+
         IResult Delete(int id);
     }
 }

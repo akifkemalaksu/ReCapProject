@@ -1,23 +1,29 @@
 ﻿using ReCapProject.Core.Business;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Entities;
+using ReCapProject.Data.Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReCapProject.Business.Abstract
 {
-    public interface IRentalEngine: IBusinessEngine
+    public interface IRentalEngine : IBusinessEngine
     {
         IDataResult<Rental> GetById(int id);
+
         IDataResult<Rental> GetByExpression(Expression<Func<Rental, bool>> expression);
-        IDataResult<ICollection<Rental>> GetAll(int skip, int take, Expression<Func<Rental, bool>> expression = null);
+
+        IDataResult<ICollection<RentalDto>> GetWithDetails();
+
+        IDataResult<ICollection<Rental>> GetAll(Expression<Func<Rental, bool>> expression = null);
+
         IDataResult<Rental> Insert(Rental rental);
+
         IDataResult<Rental> Update(Rental rental);
+
         IResult Delete(Rental rental);
+
         IResult Delete(int id);
     }
 }

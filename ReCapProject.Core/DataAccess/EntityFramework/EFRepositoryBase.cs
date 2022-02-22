@@ -51,16 +51,11 @@ namespace ReCapProject.Core.DataAccess.EntityFramework
             return _dbSet.Where(expression).FirstOrDefault();
         }
 
-        public ICollection<TEntity> GetList(int skip, int take, Expression<Func<TEntity, bool>> expression = null)
+        public ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression = null)
         {
             return expression is null ?
-                _dbSet.Skip(skip).Take(take).ToList() :
-                _dbSet.Where(expression).Skip(skip).Take(take).ToList();
-        }
-
-        public ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression)
-        {
-            return _dbSet.Where(expression).ToList();
+                _dbSet.ToList() :
+                _dbSet.Where(expression).ToList();
         }
 
         public TEntity Update(TEntity entity)

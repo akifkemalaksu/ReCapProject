@@ -5,6 +5,7 @@ using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Entities;
+using ReCapProject.Data.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -41,9 +42,9 @@ namespace ReCapProject.Business.Concrete
             }
         }
 
-        public IDataResult<ICollection<Rental>> GetAll(int skip, int take, Expression<Func<Rental, bool>> expression = null)
+        public IDataResult<ICollection<Rental>> GetAll(Expression<Func<Rental, bool>> expression = null)
         {
-            return new SuccessDataResult<ICollection<Rental>>(_rentalRepository.GetList(skip, take, expression));
+            return new SuccessDataResult<ICollection<Rental>>(_rentalRepository.GetList(expression));
         }
 
         public IDataResult<Rental> GetByExpression(Expression<Func<Rental, bool>> expression)
@@ -54,6 +55,11 @@ namespace ReCapProject.Business.Concrete
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalRepository.Get(id));
+        }
+
+        public IDataResult<ICollection<RentalDto>> GetWithDetails()
+        {
+            return new SuccessDataResult<ICollection<RentalDto>>(_rentalRepository.GetAllRentalsDetails());
         }
 
         [ValidationAspect(typeof(RentalValidator))]

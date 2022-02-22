@@ -3,16 +3,15 @@ using ReCapProject.Business.BusinessAspects.Autofac;
 using ReCapProject.Business.Constants;
 using ReCapProject.Business.ValidationRules.FluentValidation;
 using ReCapProject.Core.Aspects.Autofac.Caching;
-using ReCapProject.Core.Aspects.Autofac.Performance;
 using ReCapProject.Core.Aspects.Autofac.Transaction;
 using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
 using ReCapProject.Data.Entities;
+using ReCapProject.Data.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading;
 
 namespace ReCapProject.Business.Concrete
 {
@@ -49,11 +48,14 @@ namespace ReCapProject.Business.Concrete
 
         [SecuredOperation("Car.List")]
         [CacheAspect]
-        [PerformanceAspect(5)]
-        public IDataResult<ICollection<Car>> GetAll(int skip, int take, Expression<Func<Car, bool>> expression = null)
+        public IDataResult<ICollection<Car>> GetAll(Expression<Func<Car, bool>> expression = null)
         {
-            Thread.Sleep(6000);
-            return new SuccessDataResult<ICollection<Car>>(_carRepository.GetList(skip, take, expression));
+            return new SuccessDataResult<ICollection<Car>>(_carRepository.GetList(expression));
+        }
+
+        public IDataResult<ICollection<CarDto>> GetAllWithDetails()
+        {
+            return new SuccessDataResult<ICollection<CarDto>>(_carRepository.GetAllCarsDetails());
         }
 
         [CacheAspect]

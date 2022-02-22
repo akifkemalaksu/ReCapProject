@@ -10,11 +10,17 @@ namespace ReCapProject.Business.Abstract
     public interface IColorEngine : IBusinessEngine
     {
         IDataResult<Color> GetById(int id);
+
         IDataResult<Color> GetByExpression(Expression<Func<Color, bool>> expression);
-        IDataResult<ICollection<Color>> GetAll(int skip, int take, Expression<Func<Color, bool>> expression = null);
+
+        IDataResult<ICollection<Color>> GetAll(Expression<Func<Color, bool>> expression = null);
+
         IDataResult<Color> Insert(Color color);
+
         IDataResult<Color> Update(Color color);
+
         IResult Delete(Color color);
+
         IResult Delete(int id);
     }
 }

@@ -41,9 +41,9 @@ namespace ReCapProject.Business.Concrete
             }
         }
 
-        public IDataResult<ICollection<User>> GetAll(int skip, int take, Expression<Func<User, bool>> expression = null)
+        public IDataResult<ICollection<User>> GetAll(Expression<Func<User, bool>> expression = null)
         {
-            return new SuccessDataResult<ICollection<User>>(_userRepository.GetList(skip, take, expression));
+            return new SuccessDataResult<ICollection<User>>(_userRepository.GetList(expression));
         }
 
         public IDataResult<User> GetByExpression(Expression<Func<User, bool>> expression)
