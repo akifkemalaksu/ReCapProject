@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ReCapProject.Core.Utilities.Business.Constants;
 using System;
 using System.IO;
 
@@ -9,7 +10,7 @@ namespace ReCapProject.Core.Utilities.Helpers
         public static void FileUpload(string fileName, string folderPath, IFormFile file)
         {
             string root = Environment.CurrentDirectory;
-            string uploadFolderPath = Path.Combine(root, folderPath);
+            string uploadFolderPath = Path.Combine(root, FilePaths.wwwroot, folderPath);
 
             if (!Directory.Exists(uploadFolderPath))
                 Directory.CreateDirectory(uploadFolderPath);

@@ -31,9 +31,20 @@ namespace ReCapProject.WebAPI.Controllers
         }
 
         [HttpGet("GetWithDetails")]
-        public IActionResult GetDetails()
+        public IActionResult GetDetails(int? brandId, int? colorId)
         {
-            var result = _carEngine.GetAllWithDetails();
+            var result = _carEngine.GetAllWithDetails(brandId, colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("GetWithDetails/{id}")]
+        public IActionResult GetDetails(int id)
+        {
+            var result = _carEngine.GetWithDetails(id);
             if (result.Success)
             {
                 return Ok(result);

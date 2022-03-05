@@ -16,7 +16,8 @@ namespace ReCapProject.Business.Abstract
 
         IDataResult<ICollection<Car>> GetAll(Expression<Func<Car, bool>> expression = null);
 
-        IDataResult<ICollection<CarDto>> GetAllWithDetails();
+        IDataResult<ICollection<CarDto>> GetAllWithDetails(int? brandId, int? colorId);
+        IDataResult<CarDto> GetWithDetails(int id);
 
         IDataResult<Car> Insert(Car car);
 

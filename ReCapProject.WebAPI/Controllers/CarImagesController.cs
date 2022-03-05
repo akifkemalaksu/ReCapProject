@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReCapProject.Business.Abstract;
 using ReCapProject.Data.Entities;
@@ -39,8 +38,7 @@ namespace ReCapProject.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [Authorize]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var result = _carImageEngine.GetCarImages(id);

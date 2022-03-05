@@ -2,6 +2,7 @@
 using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
 using ReCapProject.Core.Utilities.Business;
+using ReCapProject.Core.Utilities.Business.Constants;
 using ReCapProject.Core.Utilities.Helpers;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Data.Access.Abstract;
@@ -112,7 +113,7 @@ namespace ReCapProject.Business.Concrete
                     CarId = carId,
                     Date = DateTime.Now,
                     Id = 0,
-                    ImagePath = Path.Combine()
+                    ImagePath = path.Substring(FilePaths.wwwroot.Length)
                 });
             }
             return defaults;

@@ -53,9 +53,9 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<ICollection<Car>>(_carRepository.GetList(expression));
         }
 
-        public IDataResult<ICollection<CarDto>> GetAllWithDetails()
+        public IDataResult<ICollection<CarDto>> GetAllWithDetails(int? brandId, int? colorId)
         {
-            return new SuccessDataResult<ICollection<CarDto>>(_carRepository.GetAllCarsDetails());
+            return new SuccessDataResult<ICollection<CarDto>>(_carRepository.GetAllCarsDetailsWithCarFilter(x => x.BrandId == (brandId ?? x.BrandId) && x.ColorId == (colorId ?? x.ColorId)));
         }
 
         [CacheAspect]
@@ -68,6 +68,11 @@ namespace ReCapProject.Business.Concrete
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carRepository.Get(id));
+        }
+
+        public IDataResult<CarDto> GetWithDetails(int id)
+        {
+            return new SuccessDataResult<CarDto>(_carRepository.GetWithDetails(x => x.Id == id));
         }
 
         [ValidationAspect(typeof(CarValidator))]

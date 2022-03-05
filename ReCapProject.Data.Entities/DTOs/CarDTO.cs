@@ -5,6 +5,7 @@ namespace ReCapProject.Data.Entities.DTOs
 {
     public class CarDto : IDto
     {
+        public int CarId { get; set; }
         public string BrandName { get; set; }
         public string ColorName { get; set; }
         public string Description { get; set; }

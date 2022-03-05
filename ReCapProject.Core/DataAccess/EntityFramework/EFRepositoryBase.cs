@@ -51,7 +51,7 @@ namespace ReCapProject.Core.DataAccess.EntityFramework
             return _dbSet.Where(expression).FirstOrDefault();
         }
 
-        public ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression = null)
+        public ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression)
         {
             return expression is null ?
                 _dbSet.ToList() :
