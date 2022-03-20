@@ -21,7 +21,7 @@ namespace ReCapProject.Core.DataAccess
 
         TEntity Get(Expression<Func<TEntity, bool>> expression);
 
-        ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression);
+        ICollection<TEntity> GetList(Expression<Func<TEntity, bool>> expression = null);
 
         void SaveChanges();
     }

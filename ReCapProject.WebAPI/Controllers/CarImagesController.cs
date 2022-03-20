@@ -16,7 +16,7 @@ namespace ReCapProject.WebAPI.Controllers
             _carImageEngine = carImageEngine;
         }
 
-        [HttpPost]
+        [HttpPost("{id}")]
         public IActionResult Post(int id, [FromForm] IFormFile formFile)
         {
             var result = _carImageEngine.AddImage(id, formFile);

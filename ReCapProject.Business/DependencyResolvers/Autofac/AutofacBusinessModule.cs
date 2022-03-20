@@ -29,6 +29,8 @@ namespace ReCapProject.Business.DependencyResolvers.Autofac
             builder.Register(c => new EFCarImageRepository(c.Resolve<EFReCapContext>())).As<ICarImageRepository>().SingleInstance();
             builder.Register(c => new EFOperationClaimRepository(c.Resolve<EFReCapContext>())).As<IOperationClaimRepository>().SingleInstance();
             builder.Register(c => new EFUserOperationClaimRepository(c.Resolve<EFReCapContext>())).As<IUserOperationClaimRepository>().SingleInstance();
+            builder.Register(c => new EFPaymentRepository(c.Resolve<EFReCapContext>())).As<IPaymentRepository>().SingleInstance();
+            builder.Register(c => new EFPaymentRentalMapRepository(c.Resolve<EFReCapContext>())).As<IPaymentRentalMapRepository>().SingleInstance();
 
             // Bu şekilde EntityFrameworkBase'deki entity tanımlamasını görmüyor, eksra olarak new lemek gerektiriyor.
 
@@ -50,6 +52,7 @@ namespace ReCapProject.Business.DependencyResolvers.Autofac
             builder.RegisterType<UserEngine>().As<IUserEngine>().SingleInstance();
             builder.RegisterType<CarImageEngine>().As<ICarImageEngine>().SingleInstance();
             builder.RegisterType<AuthEngine>().As<IAuthEngine>().SingleInstance();
+            builder.RegisterType<PaymentEngine>().As<IPaymentEngine>().SingleInstance();
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
